@@ -2,7 +2,7 @@
       <h2>User info</h2>
       <!--ここに画像表示機能-->
       <% if current_user.profile_image.attached? %>
-        <th><%= image_tag current_user.image, size: "100x100" %></th>
+        <th><%= image_tag book.user.get_profile_image(100,100) %></th>
       <% else %>
         <th><%= image_tag 'default-image', size: "100x100" %></th>
       <% end %>
