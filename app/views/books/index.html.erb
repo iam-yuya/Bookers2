@@ -7,18 +7,20 @@
     <div class="col-md-3">
       <h2>User info</h2>
       <!--ここに画像表示機能-->
-
+      <%= image_tag @user.get_profile_image(100,100) %>
       <table class="table">
         <tbody>
           <tr>
             <th>name</th>
-            <th><%= current_user.name %></th>
+            <th>
+              <%= @user.name %>
+            </th>
           </tr>
           <tr>
             <th>introduction</th>
             <th>
-
-              <!--<th>ログイン中のユーザーのintroduction表示 保留</th>-->
+             
+              <!--<th>ユーザーのintroduction表示 存在する・しないの場合分け必要?</th>-->
             </th>
           </tr>
         </tbody>
@@ -72,8 +74,8 @@
           <% @books.each do |book| %>
             <tr>
               <td>
-                <%= link_to user_path(current_user.id) do %>
-                  
+                <%= link_to user_path(book.id) do %>
+                  <%= image_tag book.user.get_profile_image(100,100) %>
                 <% end %>
               </td>
               <td>
