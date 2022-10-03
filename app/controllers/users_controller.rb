@@ -7,13 +7,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
-    @book = Book.find(params[:id])
+    @user = User.find(params[:id])
+    @book = Book.new
   end
 
   def destroy
   end
 
   def edit
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:introduction, :name, :profile_image)
   end
 end
