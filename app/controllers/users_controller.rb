@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = current_user
+    @book = Book.find(params[:id])
   end
 
   def destroy
