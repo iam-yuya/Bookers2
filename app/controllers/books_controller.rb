@@ -5,8 +5,11 @@ class BooksController < ApplicationController
     @book.user_id = current_user.id
     # @book（投稿データ）のuser_idを、current_user.id（今ログインしているユーザーのid）に
     # 指定することで投稿データに、ログイン中のユーザーのidを持たせている
-    @book.save
-    redirect_to book_path(current_user.id)
+    if @book.save
+      redirect_to book_path(@book.id)
+    else
+      render :index
+    end
   end
 
   def index
@@ -16,8 +19,9 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book_new = Book.new 
     @book = Book.find(params[:id])
-    @user = current_user
+    @user = @book.user
   end
 
   def edit
@@ -33,7 +37,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :body)
+    params.require(:book).permit(:title, :body, :profile_image)
   end
 
 end

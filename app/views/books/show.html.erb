@@ -4,7 +4,7 @@
   <div class="row">
 
     <!--部分テンプレート-->
-    <%= render 'user_info', book: @book, user: @user %>
+    <%= render 'user_info', book: @book_new, user: @user %>
     <!--部分テンプレート-->
 
 
@@ -17,7 +17,7 @@
         <tbody>
             <tr>
               <td>
-                <%= link_to user_path do %>
+                <%= link_to user_path(@book.user) do %>
                   <%= image_tag @book.user.get_profile_image(100,100) %><br>
                   <%= @book.user.name %>
                 <% end %>
