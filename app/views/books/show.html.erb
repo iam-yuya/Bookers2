@@ -30,6 +30,7 @@
               <td>
                 <%= @book.body %>
               </td>
+              <% if @book.user == current_user %>
               <td>
                 <%= link_to edit_book_path, class: 'btn btn-sm btn-success' do %>
                   Edit
@@ -40,6 +41,7 @@
                   Destroy
                 <% end %>
               </td>
+              <% end %>
             </tr>
         </tbody>
       </table>
